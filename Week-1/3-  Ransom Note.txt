@@ -1,0 +1,25 @@
+class Solution {
+public:
+    bool canConstruct(string ransomNote, string magazine) {
+        
+        string r=ransomNote,m=magazine;
+        
+        map<char,int>mpr,mpm;
+        for(int i=0;i<r.size();i++)
+            mpr[r[i]]++;
+        
+        for(int i=0;i<m.size();i++)
+            mpm[m[i]]++;
+        
+        if(mpr.size()>mpm.size())
+            return 0;
+        
+        for(char c='a';c<='z';c++)
+        {
+            if(mpr[c]>mpm[c])
+                return 0;
+        }
+        
+        return 1;
+    }
+};
